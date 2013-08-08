@@ -28,6 +28,14 @@ module.exports = function(grunt) {
 			defaults: {
 				src:['lib/D.js', 'lib/D.min.js']
 			}
+		},
+		jsdoc:{
+			dist: {
+				src: ['lib/D.js', 'test/*.js'],
+				options: {
+					destination: 'docs'
+				}
+			}
 		}
 	});
 
@@ -35,6 +43,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-mocha-cli');
 	grunt.loadNpmTasks('grunt-version');
+	grunt.loadNpmTasks('grunt-jsdoc');
 
 	// Default task(s).
 	grunt.registerTask('default', ['build']);
