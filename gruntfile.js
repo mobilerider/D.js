@@ -47,7 +47,8 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask('default', ['build']);
-	grunt.registerTask('test', ['mochacli']);
-	grunt.registerTask('build', ['uglify','version','mochacli']);
+	grunt.registerTask('test', ['mochacli:src','mochacli:min']);
+	grunt.registerTask('test-coverage', ['jscoverage','mochacli:cov']);
+	grunt.registerTask('build', ['uglify', 'version', 'jscoverage', 'mochacli:cov']);
 
 };

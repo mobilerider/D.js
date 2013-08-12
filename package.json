@@ -16,7 +16,9 @@
     "grunt-mocha-cli": "~1.0",
     "chai": "~1.7",
     "grunt-version": "~0.2.2",
-    "grunt-jscoverage": "0.0.3"
+    "grunt-jscoverage": "0.0.3",
+    "coveralls": "~2.1.0",
+    "mocha-lcov-reporter": "0.0.1"
   },
   "scripts": {
     "test": "promises-aplus-tests tests/d-aplus-adapter.js && grunt test"
