@@ -1,13 +1,13 @@
 #D.js
-D.js is a tiny implementation of promises/A+ made for nodejs and client-side browser
-[![Build Status](https://travis-ci.org/malko/D.js.png?branch=master)](https://travis-ci.org/malko/D.js)
-
+D.js is a tiny implementation of promises/A+ made for nodejs and client-side browser (tested in ie7+, firefox and chrome)
 If you want to know more about promises/A+ you can visit this page: http://promises-aplus.github.io/promises-spec/
 <a href="http://promises-aplus.github.com/promises-spec">
     <img src="http://promises-aplus.github.com/promises-spec/assets/logo-small.png"
          alt="Promises/A+ logo" title="Promises/A+ 1.0 compliant" align="right" />
 </a>
 
+[![Build Status](https://travis-ci.org/malko/D.js.png?branch=master)](https://travis-ci.org/malko/D.js)
+[![Codacy Badge](https://www.codacy.com/project/badge/7940707cc94b4a919eaa75b5054b63f4)](https://www.codacy.com/public/malko/D.js.git)
 ## installation
 ### nodejs
 ```npm install d.js```
@@ -159,11 +159,15 @@ return a rejected promise with given __reason__
 #### D.wait(time)
 return a promise that will resolve in __time__ ms
 #### D.delay(fn,delay)
-return a promise for the return value of __fn__ which will be resolved in __delay__ ms
+return a promise for the return value of __fn__ which will be resolved in __delay__ ms (if fn is not a function it will be used as the resolved value)
 #### D.promisify(value)
 internal method exposed that will return a resolved promised of value if value isn't a promise
 #### D.all(listOfPromise), D.all(promise0,promise1,promise....)
 take a list of promise as single Array or as list or parameters and return a promise that will resolved only when all given promised are resolved. the promise will received given promises values as parameters
+#### D.resolveAll(listOfPromise), D.resolveAll(promise0,promise1,promise....)
+take a list of promise as single Array or as list or parameters and return an always fulfilled promise of array<promise> list of promises/values regardless of their fulfilled or rejected resolution.
+#### D.sequence(listOfFunction), D.sequence(fn0,fn1,fn....)
+take a list of function to execute in order passing results of one to the other and return a promised of the last returned value. will be rejected if any of the function throw an error. as a convenience, it can also receive promises or direct values instead of functions in which case they will be considered as returned value
 #### D.nodeCapsule(fn), D.nodeCapsule(subject,fn)
 encapsulate typical node methods that wait for a callback(Err,param1,param2...) as last parameters and return the wrapped method which will return a promise of response usable with then, succes, ...
 ie:
